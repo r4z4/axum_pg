@@ -108,7 +108,7 @@ pub fn create_routes(database: DatabaseConnection) -> Router<(), Body> {
         .route("/mirror_user_agent", get(mirror_user_agent))
         .route("/mirror_custom_header", get(mirror_custom_header))
         .route("/middleware_message", get(middleware_message))
-        .layer(cors)
+        // .layer(cors)
         .layer(Extension(shared_data))
         .route("/always_errors", get(always_errors))
         .route("/returns_201", post(returns_201))
@@ -150,5 +150,6 @@ pub fn create_routes(database: DatabaseConnection) -> Router<(), Body> {
         .route("/get_insurer/:insurer_id", get(get_insurer))
         .route("/get_iros", get(get_all_iros))
         .route("/get_iro/:iro_id", get(get_iro))
+        .layer(cors)
         .layer(Extension(database))
 }
