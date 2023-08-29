@@ -64,6 +64,7 @@ pub async fn get_all_eligible_cases(Extension(database): Extension<DatabaseConne
         // .filter(tasks::Column::DeletedAt.is_null())
         .all(&database)
         .await
+        // FIXME: No records? Match on error
         .map_err(|_error| StatusCode::INTERNAL_SERVER_ERROR)?
         .into_iter()
         .map(|db_eligible_case| ResponseEligibleCase {
