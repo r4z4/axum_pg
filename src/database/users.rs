@@ -5,10 +5,10 @@ use sea_orm::entity::prelude::*;
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Eq)]
 #[sea_orm(table_name = "users")]
 pub struct Model {
-    #[sea_orm(primary_key, auto_increment = false)]
+    #[sea_orm(primary_key, auto_increment = true)]
     pub user_id: i32,
     pub username: String,
-    pub hash_pass: Option<String>,
+    pub hash_pass: String,
     pub token: Option<String>,
     pub created_at: Option<DateTime>,
     pub deleted_at: Option<DateTime>,
