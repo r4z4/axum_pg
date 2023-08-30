@@ -40,6 +40,7 @@ mod delete_eligible_case;
 mod users;
 mod guard;
 
+use http::header::{AUTHORIZATION, ACCEPT, CONTENT_TYPE};
 use axum::{
     middleware,
     routing::{get, post, put, patch, delete},
@@ -96,6 +97,7 @@ pub struct SharedData {
 
 pub fn create_routes(database: DatabaseConnection) -> Router<(), Body> {
     let cors = CorsLayer::new()
+        .allow_headers([AUTHORIZATION, ACCEPT, CONTENT_TYPE])
         .allow_methods([Method::GET, Method::POST])
         .allow_origin(Any);
     let shared_data = SharedData {

@@ -21,6 +21,7 @@ serde_with = "3.3.0"
 chrono = "0.4.26"
 bcrypt = "0.15.0"
 jsonwebtoken = "8.3.0"
+http = "0.2.9"
 
 [dev-dependencies]
 httpc-test = "0.1.1"
